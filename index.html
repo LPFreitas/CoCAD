@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CoCAD — Multimodal CAD Model Generation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="CoCAD — Multimodal generative system for parametric CAD models, combining image and text encoders with a latent flow-matching model."
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header class="site-header" id="home">
+    <nav class="nav">
+      <div class="nav__brand">
+        <a href="#home" class="nav__brand-link">CoCAD</a>
+      </div>
+      <button class="nav__toggle" aria-label="Toggle navigation">
+        <span class="nav__toggle-line"></span>
+        <span class="nav__toggle-line"></span>
+      </button>
+      <ul class="nav__links">
+        <li><a href="#home" class="nav__link">Home</a></li>
+        <li><a href="#abstract" class="nav__link">Abstract</a></li>
+        <li><a href="#architecture" class="nav__link">Architecture</a></li>
+        <li><a href="#dataset" class="nav__link">Dataset</a></li>
+        <li><a href="#results" class="nav__link">Results</a></li>
+        <li><a href="#repository" class="nav__link">Repository</a></li>
+        <li><a href="#contact" class="nav__link">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero__content container">
+        <div class="hero__text">
+          <p class="hero__eyebrow">TCC Research Project</p>
+          <h1 class="hero__title">CoCAD</h1>
+          <p class="hero__subtitle">
+            Multimodal Generative System for Parametric CAD Models
+          </p>
+          <p class="hero__meta">
+            Author: <span>Lucas Palmiro de Freitas</span><br />
+            Institutions:
+            <span>Poli-USP · Télécom Paris · École Polytechnique (M2 Data Science)</span>
+          </p>
+          <div class="hero__actions">
+            <a href="#abstract" class="btn btn--primary">Read Abstract</a>
+            <a href="#repository" class="btn btn--ghost">Project Resources</a>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="hero-card">
+            <p class="hero-card__label">Research Focus</p>
+            <h2 class="hero-card__title">CAD from Images &amp; Text</h2>
+            <p class="hero-card__body">
+              CoCAD learns a shared latent space for sketches, natural language
+              prompts and parametric CAD command sequences to synthesize valid,
+              editable CAD models.
+            </p>
+            <div class="hero-card__tags">
+              <span class="tag">Flow Matching</span>
+              <span class="tag">DINOv2</span>
+              <span class="tag">BERT</span>
+              <span class="tag">CAD Autoencoder</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <!-- Abstract -->
+    <section id="abstract" class="section section--alt">
+      <div class="container section__inner">
+        <header class="section__header">
+          <h2 class="section__title">Abstract</h2>
+          <p class="section__kicker">Motivation &amp; approach</p>
+        </header>
+        <article class="section__content section__content--narrow">
+          <p>
+            Modern computer-aided design (CAD) workflows still require
+            significant manual effort to translate sketches and textual
+            specifications into parametric models. This manual process limits
+            rapid iteration and makes downstream automation difficult. CoCAD
+            investigates a multimodal generative approach that maps images,
+            natural language, and parametric CAD command sequences into a shared
+            latent representation, enabling the automatic synthesis of valid CAD
+            programs.
+          </p>
+          <p>
+            A sequence autoencoder is first trained to represent CAD modeling
+            histories as compact latent codes while preserving command
+            structure, constraints and parameter values. Visual sketches or
+            rendered views are embedded using a frozen DINOv2 backbone, and
+            textual descriptions are embedded with a frozen BERT encoder. Both
+            modalities are projected into the CAD latent space through
+            lightweight MLP adapters and a transformer-based fusion layer that
+            aligns multimodal information.
+          </p>
+          <p>
+            On top of these representations, CoCAD employs a latent
+            flow-matching generative model that learns to transport noise
+            samples to the CAD latent distribution conditioned on image and text
+            embeddings. During inference, the flow-matching model generates
+            CAD latents that are decoded by the autoencoder into command
+            sequences. The resulting outputs are valid, editable CAD programs
+            that can be directly loaded into parametric CAD environments,
+            providing a step toward end-to-end, multimodal automation of CAD
+            modeling workflows.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Architecture -->
+    <section id="architecture" class="section">
+      <div class="container section__inner">
+        <header class="section__header">
+          <h2 class="section__title">Architecture</h2>
+          <p class="section__kicker">Model components &amp; training pipeline</p>
+        </header>
+
+        <div class="grid grid--2">
+          <div class="card card--outline">
+            <div class="placeholder-img" role="img" aria-label="Model overview schematic">
+              <span class="placeholder-img__label">
+                Model overview (training pipeline)
+              </span>
+            </div>
+            <p class="placeholder-img__caption">
+              Figure 1 – Multimodal training pipeline for CoCAD. Final diagrams
+              will be added after publication.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3 class="card__title">Architecture Summary</h3>
+            <ul class="list list--bullets">
+              <li>Autoencoder for CAD command sequence encoding and decoding</li>
+              <li>Frozen DINOv2 backbone for high-level image embeddings</li>
+              <li>Frozen BERT encoder for textual specification embeddings</li>
+              <li>MLP adapters and a transformer fusion layer for modality alignment</li>
+              <li>Latent generative model trained with flow matching in CAD space</li>
+            </ul>
+            <p class="card__body">
+              The architecture separates representation learning for CAD and
+              perception from the conditional generative model, allowing the use
+              of strong pretrained encoders while keeping CAD-specific
+              components compact and controllable.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dataset -->
+    <section id="dataset" class="section section--alt">
+      <div class="container section__inner">
+        <header class="section__header">
+          <h2 class="section__title">Dataset</h2>
+          <p class="section__kicker">Multimodal CAD corpus</p>
+        </header>
+
+        <div class="grid grid--2">
+          <article class="section__content">
+            <p>
+              The CoCAD dataset is built from parametric CAD design histories,
+              where each sample comprises a sequence of modeling commands,
+              associated sketches, and rendered views of the final geometry. The
+              command sequences are normalized into a consistent grammar and
+              tokenization scheme suitable for sequence modeling, while
+              parameter values and constraints are preserved to keep the designs
+              editable.
+            </p>
+            <p>
+              For the multimodal setup, each CAD program is paired with one or
+              more 2D inputs: rasterized sketch images capturing the design
+              intent and rendered views of the final 3D model from multiple
+              perspectives. Textual annotations summarize geometric features,
+              functional roles, and design constraints. The dataset is split
+              into training, validation, and test sets to avoid component-level
+              leakage and to evaluate generalization to unseen geometries and
+              descriptions.
+            </p>
+          </article>
+
+          <div class="card card--outline">
+            <h3 class="card__title">Dataset Views</h3>
+            <ul class="list list--bullets">
+              <li>Parametric CAD command sequences with parameters &amp; constraints</li>
+              <li>Sketch-like 2D inputs used as conditioning images</li>
+              <li>Multi-view renders of final models (front / side / isometric)</li>
+              <li>Short textual descriptions of function and geometry</li>
+              <li>Train/validation/test splits respecting design families</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section id="results" class="section">
+      <div class="container section__inner">
+        <header class="section__header">
+          <h2 class="section__title">Results</h2>
+          <p class="section__kicker">Qualitative and quantitative evaluation</p>
+        </header>
+
+        <div class="grid grid--2">
+          <!-- Qualitative block -->
+          <div class="card">
+            <h3 class="card__title">Qualitative Reconstructions</h3>
+            <p class="card__body">
+              This section will showcase qualitative examples comparing target
+              CAD models with CoCAD reconstructions conditioned on sketches and
+              text.
+            </p>
+            <div class="results-grid">
+              <div class="results-card">
+                <div class="results-card__thumb" aria-hidden="true">
+                  <span class="results-card__label">Before</span>
+                </div>
+                <p class="results-card__caption">
+                  Ground-truth parametric CAD model.
+                </p>
+              </div>
+              <div class="results-card">
+                <div class="results-card__thumb results-card__thumb--alt" aria-hidden="true">
+                  <span class="results-card__label">After</span>
+                </div>
+                <p class="results-card__caption">
+                  CoCAD reconstruction from image + text.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quantitative block -->
+          <div class="card card--outline">
+            <h3 class="card__title">Numerical Metrics</h3>
+            <p class="card__body">
+              Final metrics will be added once experiments are complete. Planned
+              indicators include:
+            </p>
+            <ul class="list list--bullets">
+              <li>Reconstruction loss in CAD latent space</li>
+              <li>Cosine similarity between predicted and target latents</li>
+              <li>Valid reconstruction rate (syntactic + geometric checks)</li>
+              <li>Command-level accuracy for key operations and parameters</li>
+            </ul>
+            <div class="metrics-placeholder">
+              <span class="metrics-placeholder__label">
+                Plots for training curves and validation metrics will appear here.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Repository & Resources -->
+    <section id="repository" class="section section--alt">
+      <div class="container section__inner">
+        <header class="section__header">
+          <h2 class="section__title">Repository &amp; Resources</h2>
+          <p class="section__kicker">Code, experiments and dissertation</p>
+        </header>
+
+        <div class="grid grid--3">
+          <div class="card">
+            <h3 class="card__title">GitHub Repository</h3>
+            <p class="card__body">
+              Source code for the CoCAD models, dataset preparation scripts and
+              experiment configuration.
+            </p>
+            <a
+              href="#"
+              class="btn btn--link"
+              aria-label="GitHub repository (to be added)"
+            >
+              GitHub repo (coming soon)
+            </a>
+          </div>
+
+          <div class="card">
+            <h3 class="card__title">Training Notebooks</h3>
+            <p class="card__body">
+              Interactive notebooks demonstrating data loading, model training
+              and evaluation workflows for the multimodal system.
+            </p>
+            <a
+              href="#"
+              class="btn btn--link"
+              aria-label="Training notebooks (to be added)"
+            >
+              Training notebooks (coming soon)
+            </a>
+          </div>
+
+          <div class="card">
+            <h3 class="card__title">Dissertation PDF</h3>
+            <p class="card__body">
+              Full TCC dissertation describing the methodology, experiments and
+              future research directions.
+            </p>
+            <a
+              href="#"
+              class="btn btn--link"
+              aria-label="PDF dissertation (to be added)"
+            >
+              PDF dissertation (coming soon)
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <div class="container section__inner">
+        <header class="section__header">
+          <h2 class="section__title">Contact</h2>
+          <p class="section__kicker">Get in touch</p>
+        </header>
+
+        <div class="card card--outline contact-card">
+          <p class="card__body">
+            For questions about CoCAD, collaboration opportunities, or access to
+            the dataset and code, feel free to reach out.
+          </p>
+          <ul class="list list--contacts">
+            <li>
+              <span class="list__label">Email:</span>
+              <a href="mailto:your.email@example.com">
+                your.email@example.com
+              </a>
+            </li>
+            <li>
+              <span class="list__label">GitHub:</span>
+              <a href="https://github.com/your-github" target="_blank" rel="noopener">
+                github.com/your-github
+              </a>
+            </li>
+            <li>
+              <span class="list__label">LinkedIn:</span>
+              <a
+                href="https://www.linkedin.com/in/your-linkedin"
+                target="_blank"
+                rel="noopener"
+              >
+                linkedin.com/in/your-linkedin
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <p class="site-footer__text">
+        &copy; <span id="year"></span>
+        CoCAD — Multimodal CAD Model Generation. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scroll for in-page navigation
+    document.querySelectorAll('.nav__link').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href');
+        if (targetId.startsWith('#')) {
+          const target = document.querySelector(targetId);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      });
+    });
+
+    // Simple mobile nav toggle
+    const navToggle = document.querySelector('.nav__toggle');
+    const navLinks = document.querySelector('.nav__links');
+
+    navToggle.addEventListener('click', function () {
+      navLinks.classList.toggle('nav__links--open');
+      document.body.classList.toggle('nav-open');
+    });
+
+    // Close nav on link click (mobile)
+    navLinks.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        navLinks.classList.remove('nav__links--open');
+        document.body.classList.remove('nav-open');
+      });
+    });
+
+    // Dynamic year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
