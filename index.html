@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <title>CoCAD — Geração Multimodal de Modelos CAD</title>
@@ -17,7 +17,8 @@
       <div class="nav__brand">
         <a href="#home" class="nav__brand-link">CoCAD</a>
       </div>
-      <button class="nav__toggle" aria-label="Toggle navigation">
+      <button class="nav__toggle" aria-label="Alternar navegação">
+        <span class="nav__toggle-line"></span>
         <span class="nav__toggle-line"></span>
         <span class="nav__toggle-line"></span>
       </button>
@@ -39,7 +40,7 @@
           <p class="hero__eyebrow">Trabalho de Conclusão de Curso</p>
           <h1 class="hero__title">CoCAD</h1>
           <p class="hero__subtitle">
-            Sistema Generativo Multimodal para Modelos CAD Paramétricos
+            Sistema generativo multimodal para modelos CAD paramétricos
           </p>
           <p class="hero__meta">
             Autor: <span>Lucas Palmiro de Freitas</span><br />
@@ -47,14 +48,14 @@
             <span>Poli-USP · Télécom Paris · École Polytechnique (Mestrado em Data Science)</span>
           </p>
           <div class="hero__actions">
-            <a href="#abstract" class="btn btn--primary">Ler Resumo</a>
-            <a href="#repository" class="btn btn--ghost">Recursos do Projeto</a>
+            <a href="#abstract" class="btn btn--primary">Ler resumo</a>
+            <a href="#repository" class="btn btn--ghost">Recursos do projeto</a>
           </div>
         </div>
         <div class="hero__visual">
           <div class="hero-card">
-            <p class="hero-card__label">Foco da Pesquisa</p>
-            <h2 class="hero-card__title">CAD a partir de Imagens &amp; Texto</h2>
+            <p class="hero-card__label">Foco da pesquisa</p>
+            <h2 class="hero-card__title">CAD a partir de imagens &amp; texto</h2>
             <p class="hero-card__body">
               O CoCAD aprende um espaço latente compartilhado para esboços,
               descrições em linguagem natural e sequências de comandos CAD
@@ -142,7 +143,7 @@
           </div>
 
           <div class="card">
-            <h3 class="card__title">Resumo da Arquitetura</h3>
+            <h3 class="card__title">Resumo da arquitetura</h3>
             <ul class="list list--bullets">
               <li>Autoencoder para codificação e decodificação de sequências de comandos CAD</li>
               <li>Backbone DINOv2 congelado para embeddings de imagem de alto nível</li>
@@ -165,7 +166,7 @@
     <section id="dataset" class="section section--alt">
       <div class="container section__inner">
         <header class="section__header">
-          <h2 class="section__title">Conjunto de Dados</h2>
+          <h2 class="section__title">Conjunto de dados</h2>
           <p class="section__kicker">Corpus CAD multimodal</p>
         </header>
 
@@ -193,7 +194,7 @@
           </article>
 
           <div class="card card--outline">
-            <h3 class="card__title">Vistas do Conjunto de Dados</h3>
+            <h3 class="card__title">Vistas do conjunto de dados</h3>
             <ul class="list list--bullets">
               <li>Sequências de comandos CAD paramétricos com parâmetros &amp; restrições</li>
               <li>Entradas 2D do tipo esboço usadas como imagens de condicionamento</li>
@@ -217,7 +218,7 @@
         <div class="grid grid--2">
           <!-- Qualitative block -->
           <div class="card">
-            <h3 class="card__title">Reconstruções Qualitativas</h3>
+            <h3 class="card__title">Reconstruções qualitativas</h3>
             <p class="card__body">
               Esta seção apresentará exemplos qualitativos comparando modelos
               CAD alvo com reconstruções produzidas pelo CoCAD a partir de
@@ -245,7 +246,7 @@
 
           <!-- Quantitative block -->
           <div class="card card--outline">
-            <h3 class="card__title">Métricas Numéricas</h3>
+            <h3 class="card__title">Métricas numéricas</h3>
             <p class="card__body">
               As métricas finais serão adicionadas quando os experimentos
               estiverem concluídos. Indicadores planejados incluem:
@@ -270,7 +271,7 @@
     <section id="repository" class="section section--alt">
       <div class="container section__inner">
         <header class="section__header">
-          <h2 class="section__title">Repositório &amp; Recursos</h2>
+          <h2 class="section__title">Repositório &amp; recursos</h2>
           <p class="section__kicker">Código, experimentos e dissertação</p>
         </header>
 
@@ -291,7 +292,7 @@
           </div>
 
           <div class="card">
-            <h3 class="card__title">Notebooks de Treinamento</h3>
+            <h3 class="card__title">Notebooks de treinamento</h3>
             <p class="card__body">
               Notebooks interativos demonstrando carregamento de dados, treino
               de modelos e fluxos de avaliação para o sistema multimodal.
@@ -377,7 +378,7 @@
   </footer>
 
   <script>
-    // Smooth scroll for in-page navigation
+    // Scroll suave para navegação interna
     document.querySelectorAll('.nav__link').forEach(function (link) {
       link.addEventListener('click', function (e) {
         const targetId = this.getAttribute('href');
@@ -391,7 +392,7 @@
       });
     });
 
-    // Simple mobile nav toggle
+    // Toggle simples para navegação mobile
     const navToggle = document.querySelector('.nav__toggle');
     const navLinks = document.querySelector('.nav__links');
 
@@ -400,7 +401,7 @@
       document.body.classList.toggle('nav-open');
     });
 
-    // Close nav on link click (mobile)
+    // Fecha o menu ao clicar em um link (mobile)
     navLinks.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', function () {
         navLinks.classList.remove('nav__links--open');
@@ -408,7 +409,7 @@
       });
     });
 
-    // Dynamic year in footer
+    // Ano dinâmico no rodapé
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
