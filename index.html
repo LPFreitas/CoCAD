@@ -28,6 +28,7 @@
         <li><a href="#architecture" class="nav__link">Arquitetura</a></li>
         <li><a href="#dataset" class="nav__link">Conjunto de Dados</a></li>
         <li><a href="#results" class="nav__link">Resultados</a></li>
+        <li><a href="#video" class="nav__link">Vídeo</a></li>
         <li><a href="#repository" class="nav__link">Repositório</a></li>
         <li><a href="#contact" class="nav__link">Contato</a></li>
       </ul>
@@ -37,19 +38,20 @@
     <section class="hero">
       <div class="hero__content container">
         <div class="hero__text">
-          <p class="hero__eyebrow">Trabalho de Conclusão de Curso</p>
+          <p class="hero__eyebrow">Trabalho de Conclusão de Curso · Escola Politécnica da USP</p>
           <h1 class="hero__title">CoCAD</h1>
           <p class="hero__subtitle">
             Sistema generativo multimodal para modelos CAD paramétricos
           </p>
           <p class="hero__meta">
             Autor: <span>Lucas Palmiro de Freitas</span><br />
-            Instituições:
-            <span>Poli-USP · Télécom Paris · École Polytechnique (Mestrado em Data Science)</span>
+            Instituição:
+            <span>Escola Politécnica da Universidade de São Paulo (Poli-USP)</span>
           </p>
           <div class="hero__actions">
-            <a href="#abstract" class="btn btn--primary">Ler resumo</a>
-            <a href="#repository" class="btn btn--ghost">Recursos do projeto</a>
+            <a href="#thesis" class="btn btn--primary">Monografia</a>
+            <a href="#repository" class="btn btn--ghost">Código</a>
+            <a href="#video" class="btn btn--ghost">Vídeo</a>
           </div>
         </div>
         <div class="hero__visual">
@@ -267,12 +269,36 @@
       </div>
     </section>
 
+    <!-- Vídeo -->
+    <section id="video" class="section section--alt">
+      <div class="container section__inner">
+        <header class="section__header">
+          <h2 class="section__title">Vídeo de apresentação</h2>
+          <p class="section__kicker">Demonstração do sistema CoCAD</p>
+        </header>
+
+        <div class="card">
+          <p class="card__body">
+            Um vídeo de apresentação do CoCAD será incorporado abaixo, contendo
+            demonstrações da interface, exemplos de entrada (imagem + texto) e
+            visualizações dos modelos CAD gerados.
+          </p>
+          <div class="video-container">
+            <!-- Placeholder – substitua pelo iframe do vídeo (YouTube, Vimeo, etc.) -->
+            <div class="video-placeholder">
+              <p>Vídeo de demonstração será adicionado aqui.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Repositório & Recursos -->
-    <section id="repository" class="section section--alt">
+    <section id="repository" class="section">
       <div class="container section__inner">
         <header class="section__header">
           <h2 class="section__title">Repositório &amp; recursos</h2>
-          <p class="section__kicker">Código, experimentos e dissertação</p>
+          <p class="section__kicker">Código, experimentos e monografia</p>
         </header>
 
         <div class="grid grid--3">
@@ -291,8 +317,23 @@
             </a>
           </div>
 
+          <div class="card" id="thesis">
+            <h3 class="card__title">Monografia</h3>
+            <p class="card__body">
+              TCC completo descrevendo o contexto, a metodologia, os resultados
+              experimentais e trabalhos futuros relacionados ao CoCAD.
+            </p>
+            <a
+              href="#"
+              class="btn btn--link"
+              aria-label="Monografia em PDF (a ser adicionada)"
+            >
+              Monografia em PDF (em breve)
+            </a>
+          </div>
+
           <div class="card">
-            <h3 class="card__title">Notebooks de treinamento</h3>
+            <h3 class="card__title">Notebooks &amp; exemplos</h3>
             <p class="card__body">
               Notebooks interativos demonstrando carregamento de dados, treino
               de modelos e fluxos de avaliação para o sistema multimodal.
@@ -305,27 +346,12 @@
               Notebooks de treinamento (em breve)
             </a>
           </div>
-
-          <div class="card">
-            <h3 class="card__title">Dissertação em PDF</h3>
-            <p class="card__body">
-              Dissertação completa de TCC descrevendo metodologia, experimentos
-              e direções futuras de pesquisa.
-            </p>
-            <a
-              href="#"
-              class="btn btn--link"
-              aria-label="Dissertação em PDF (a ser adicionada)"
-            >
-              Dissertação em PDF (em breve)
-            </a>
-          </div>
         </div>
       </div>
     </section>
 
     <!-- Contato -->
-    <section id="contact" class="section">
+    <section id="contact" class="section section--alt">
       <div class="container section__inner">
         <header class="section__header">
           <h2 class="section__title">Contato</h2>
@@ -365,6 +391,56 @@
         </div>
       </div>
     </section>
+
+    <!-- BibTeX -->
+    <section id="bibtex" class="section">
+      <div class="container section__inner">
+        <header class="section__header">
+          <h2 class="section__title">BibTeX</h2>
+          <p class="section__kicker">Como citar este trabalho</p>
+        </header>
+
+        <div class="bibtex-block">
+          <p class="bibtex-block__intro">
+            Se este trabalho foi útil para sua pesquisa ou projeto, utilize a
+            citação BibTeX abaixo:
+          </p>
+          <pre class="bibtex-code"><code>@mastersthesis{freitas2025cocad,
+  author       = {Lucas Palmiro de Freitas},
+  title        = {CoCAD: Sistema Generativo Multimodal para Modelos CAD Paramétricos},
+  school       = {Escola Politécnica da Universidade de S{\~a}o Paulo},
+  address      = {S{\~a}o Paulo, Brasil},
+  year         = {2025},
+  type         = {Trabalho de Conclus{\~a}o de Curso},
+}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Agradecimentos -->
+    <section id="acknowledgment" class="section section--alt">
+      <div class="container section__inner">
+        <header class="section__header">
+          <h2 class="section__title">Acknowledgment</h2>
+          <p class="section__kicker">Agradecimentos</p>
+        </header>
+
+        <div class="ack-block">
+          <p>
+            Este trabalho foi desenvolvido na Escola Politécnica da
+            Universidade de São Paulo (Poli-USP). O autor agradece ao
+            orientador, aos colegas de pesquisa e aos professores que
+            contribuíram com discussões técnicas, feedbacks e apoio ao longo do
+            desenvolvimento deste projeto.
+          </p>
+          <p>
+            O autor também agradece à família e amigos pelo suporte contínuo
+            durante o período de realização do TCC. Qualquer erro ou omissão
+            remanescente é de inteira responsabilidade do autor.
+          </p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- Rodapé -->
@@ -372,7 +448,7 @@
     <div class="container site-footer__inner">
       <p class="site-footer__text">
         &copy; <span id="year"></span>
-        CoCAD — Geração Multimodal de Modelos CAD. Todos os direitos reservados.
+        CoCAD — Geração Multimodal de Modelos CAD · Escola Politécnica da USP.
       </p>
     </div>
   </footer>
